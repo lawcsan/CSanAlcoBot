@@ -11,11 +11,11 @@ from middlewares import ThrottlingMiddleware #, SchedulerMiddleware
 from apscheduler.jobstores.redis import RedisJobStore
 
 
-from aiogram.contrib.fsm_storage.redis import RedisStorage2
-storage = RedisStorage2('localhost', 6379)
+#from aiogram.contrib.fsm_storage.redis import RedisStorage2
+#storage = RedisStorage2('localhost', 6379)
 
-#from aiogram.contrib.fsm_storage.memory import MemoryStorage
-#storage = MemoryStorage()
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+storage = MemoryStorage()
 
 bot = Bot(token=config.bot_token.get_secret_value(), parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
